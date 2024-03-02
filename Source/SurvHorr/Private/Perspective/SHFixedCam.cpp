@@ -43,6 +43,27 @@ void ASHFixedCam::OnCollision(UPrimitiveComponent* OverlappedComponent,
 
 void ASHFixedCam::ChangePerspective()
 {
-	if (APlayerController* PC = UGameplayStatics::GetPlayerController(GetWorld(), 0))
-		PC->SetViewTargetWithBlend(this, BlendTime, VTBlend_Linear, BlendExponential);
+	switch (E_CameraType)
+	{
+	case ECameraType::E_Fixed:
+		if (APlayerController* PC = UGameplayStatics::GetPlayerController(GetWorld(), 0))
+			PC->SetViewTargetWithBlend(this, BlendTime, VTBlend_Linear, BlendExponential);
+		break;
+
+	case ECameraType::E_TPS:
+		if (APlayerController* PC = UGameplayStatics::GetPlayerController(GetWorld(), 0))
+			PC->SetViewTargetWithBlend(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0), BlendTime, VTBlend_Linear, BlendExponential);
+		break;
+
+	case ECameraType::E_FPS:
+		if (APlayerController* PC = UGameplayStatics::GetPlayerController(GetWorld(), 0))
+			PC->SetViewTargetWithBlend(this, BlendTime, VTBlend_Linear, BlendExponential);
+		break;
+
+	case ECameraType::E_Default:
+		if (APlayerController* PC = UGameplayStatics::GetPlayerController(GetWorld(), 0))
+			PC->SetViewTargetWithBlend(this, BlendTime, VTBlend_Linear, BlendExponential);
+		break;
+	}
+	
 }

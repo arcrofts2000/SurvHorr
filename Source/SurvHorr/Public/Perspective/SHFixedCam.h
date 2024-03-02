@@ -33,7 +33,7 @@ public:
 	float BlendExponential = 0.f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Camera")
-	TEnumAsByte<ECameraType> ECameraType;
+	TEnumAsByte<ECameraType> E_CameraType;
 
 protected:
 
