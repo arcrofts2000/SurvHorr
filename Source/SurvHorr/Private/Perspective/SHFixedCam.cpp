@@ -1,11 +1,11 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "SHFixedCam.h"
+#include "Perspective/SHFixedCam.h"
 #include "Components/BoxComponent.h"
 #include "Camera/CameraComponent.h"
 #include "Kismet/GameplayStatics.h"
-#include "SHCharacter.h"
+#include "Player/SHCharacter.h"
 
 // Sets default values
 ASHFixedCam::ASHFixedCam()

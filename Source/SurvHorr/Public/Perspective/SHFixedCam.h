@@ -9,6 +9,14 @@
 class UBoxComponent;
 class UCameraComponent;
 
+UENUM(BlueprintType)
+enum class ECameraType : uint8 {
+	E_Fixed UMETA(DisplayName = "FixedCamera"),
+	E_TPS UMETA(DisplayName = "Third Person"),
+	E_FPS UMETA(DisplayName = "First Person"),
+	E_Default UMETA(DisplayName = "Default")
+};
+
 UCLASS()
 class SURVHORR_API ASHFixedCam : public AActor
 {
@@ -23,6 +31,9 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "Camera")
 	float BlendExponential = 0.f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Camera")
+	TEnumAsByte<ECameraType> ECameraType;
 
 protected:
 
